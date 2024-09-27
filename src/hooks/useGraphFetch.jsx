@@ -1,6 +1,38 @@
 import { useQuery } from "@tanstack/react-query";
 import { request } from "graphql-request";
 
+/**
+ * Custom hook that performs a GraphQL fetch using either a URL string or an env key as a string.
+ * It also supports optional mutations if you want to fetch based on a specific ID.
+ * If `querySelector` and `selectorValue` are not provided in the function call, it will perform a basic fetch without targeting a specific ID.
+ * Usage:
+ * Without mutation
+ *  @example
+ * ```js
+ * import { useGraphFetch } from "./hooks/useGraphFetch";
+ * import { allCharacters } from "./queries/allCharacters";
+ * import { character } from "./queries/character";
+ * const { data, isLoading, error } = useGraphFetch("https://swapi-graphql.netlify.app/.netlify/functions/index", undefined, character,)
+ * ```
+ * Usage:
+ * With mutation
+ *  @example
+ * ```js
+ * import { useGraphFetch } from "./hooks/useGraphFetch";
+ * import { allCharacters } from "./queries/allCharacters";
+ * import { character } from "./queries/character";
+ * const characterId = "cGVvcGxlOjE=";
+ * const { data, isLoading, error } = useGraphFetch("https://swapi-graphql.netlify.app/.netlify/functions/index", undefined, character, "personId", characterId)
+ * ```
+ * @param {string | undefined} url - url string to api. must be undefined if using env key instead
+ * @param {string | undefined} envKey - string of the env key name. must be undefined if using url instead
+ * @param {variable} query - variable with query in template string
+ * @param {string} querySelector - string of the query mutation from the query file. Don't add anything if not using mutation
+ * @param {variable} selectorValue - variable of the query mutaion that you want to send. Don't add anything if not using mutation
+ *
+ */
+
+//Look at the jsDoc for guidance or ask me :)
 export const useGraphFetch = (
   url,
   envKey,
