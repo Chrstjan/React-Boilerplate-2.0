@@ -1,0 +1,52 @@
+@use "../../styles/mixins" as m;
+
+.overlayStyling {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: #1c1c1c77;
+    position: fixed;
+}
+
+.modalStyling {
+    @include m.flexBox(column, center, center, 1rem);
+    width: 80vw;
+    height: 25vh;
+    background: #282525;
+    color: #eee;
+    border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px #29252655;
+
+    @media (min-width: 1300px) {
+        width: 32vw;
+    }
+
+    &.lightMode {
+        background: #eee;
+        box-shadow: 2px 2px #00000055;
+        color: #000;
+    }
+
+    button {
+        background: transparent;
+        font-size: 20px;
+        color: #c23030;
+        position: absolute;
+        top: 1%;
+        right: 1%;
+        border: 0;
+
+        @media (min-width: 1300px) {
+            font-size: 24px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            scale: 1.2;
+        }
+    }
+}
